@@ -1,0 +1,21 @@
+#cd-title-h1 {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 2.5rem;
+    color: #333333;
+    position: relative;
+    width: auto;
+    display: inline-block;
+  
+    &::before {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 1px;
+      background-color: #000000;
+      bottom: -10px;
+      left: 0;
+    }
+  }  
+}
