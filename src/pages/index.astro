@@ -1,5 +1,10 @@
 ---
-import AboutSection from '../components/Home/AboutSection.astro';
+// Snippets
+import BigHeroImage from '../components/BigHeroImage.astro';
+import RowsTextImage from '../components/RowsTextImage.astro';
+import IconFeatures from '../components/IconFeatures.astro';
+
+// Layouts
 import Layout from '../layouts/Layout.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
@@ -7,5 +12,16 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
-	<AboutSection />
+	<t name="Home" t-name="website.homepage">
+  	<t t-call="website.layout">
+    	<t t-set="pageName" t-value="'homepage'"/>
+    	<div id="wrap" class="oe_structure oe_empty"></div>
+
+				<BigHeroImage />	
+				<RowsTextImage />	
+				<IconFeatures />
+
+			</div>
+  	</t>
+	</t>
 </Layout>

@@ -1,5 +1,8 @@
 ---
+
+// Styles
 import "../styles/main.scss";
+
 ---
 
 <!doctype html>
@@ -18,19 +21,145 @@ import "../styles/main.scss";
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+		<!-- Odoo Styles -->
+		<link type="text/css" rel="stylesheet" href="https://cement-design.doodrix.com/web/assets/1/26aaefc/web.assets_frontend.min.css">
+		<style>
+			/* This styles is for fix locally the styles for preview mode */
+			body {
+				overflow: unset !important;
+				overflow-x: hidden;
+				overflow-y: scroll !important;
+			}
+		</style>
+
 		<meta name="generator" content={Astro.generator} />
 		<title>Cement Design</title>
+		
 	</head>
 	<body>
 		<slot />
+		
+		<script>
+			(()=>{
+				document.addEventListener('DOMContentLoaded', () => {
+					const BASE_URL = 'https://cement-design.doodrix.com'; // sin slash final
+					const PREFIX_RE = /^\/(?:web|shop)(?:\/|$)/; // detecta /web... o /shop...
+
+					const fixPath = (p) => {
+						if (!p) return p;
+						if (PREFIX_RE.test(p)) {
+							return BASE_URL.replace(/\/$/, '') + '/' + p.replace(/^\/+/, '');
+						}
+						return p;
+					};
+
+					// Reemplaza urls dentro de un string CSS (p. ej. estilo inline o <style> text)
+					const replaceCssUrls = (text) => {
+						return text.replace(/url\((['"]?)(\/(?:web|shop)[^'")]+)\1\)/g, (m, q, path) => {
+							return `url(${q}${fixPath(path)}${q})`;
+						});
+					};
+
+					// Procesa atributos básicos: src, href, srcset y cualquier data- que quieras añadir
+					const fixAttributes = (el) => {
+						// src
+						if (el.hasAttribute && el.hasAttribute('src')) {
+							const v = el.getAttribute('src');
+							if (v && PREFIX_RE.test(v)) el.setAttribute('src', fixPath(v));
+						}
+
+						// href
+						if (el.hasAttribute && el.hasAttribute('href')) {
+							const v = el.getAttribute('href');
+							if (v && PREFIX_RE.test(v)) el.setAttribute('href', fixPath(v));
+						}
+
+						// srcset (puede contener varias entradas separadas por coma)
+						if (el.hasAttribute && el.hasAttribute('srcset')) {
+							const v = el.getAttribute('srcset');
+							if (v) {
+								const newVal = v.split(',')
+									.map(part => {
+										part = part.trim();
+										// remplaza sólo la URL inicial si empieza con /web o /shop
+										return part.replace(/^(\/(?:web|shop)[^\s,]+)/, m => fixPath(m));
+									})
+									.join(', ');
+								if (newVal !== v) el.setAttribute('srcset', newVal);
+							}
+						}
+					};
+
+					// Revisa y arregla style="" inline (texto completo del atributo)
+					const fixStyleAttribute = (el) => {
+						if (!el.hasAttribute || !el.hasAttribute('style')) return;
+						const styleText = el.getAttribute('style') || '';
+						const newStyleText = replaceCssUrls(styleText);
+						if (newStyleText !== styleText) el.setAttribute('style', newStyleText);
+						// también actualizar la propiedad style.backgroundImage por si el navegador la usa
+						if (el.style && el.style.backgroundImage) {
+							const bi = el.style.backgroundImage;
+							const newBi = bi.replace(/url\((['"]?)(\/(?:web|shop)[^'")]+)\1\)/g, (m, q, path) => `url(${q}${fixPath(path)}${q})`);
+							if (newBi !== bi) el.style.backgroundImage = newBi;
+						}
+					};
+
+					// Reescribe URLs dentro de <style> tags inline
+					const fixStyleTags = () => {
+						document.querySelectorAll('style').forEach(st => {
+							if (!st.textContent) return;
+							const txt = st.textContent;
+							const newTxt = replaceCssUrls(txt);
+							if (newTxt !== txt) st.textContent = newTxt;
+						});
+					};
+
+					// Ejecuta todas las correcciones sobre un elemento concreto
+					const processElement = (el) => {
+						if (!(el && el.nodeType === 1)) return;
+						fixAttributes(el);
+						fixStyleAttribute(el);
+						// algunos elementos pueden tener background en estilo computado pero no inline; 
+						// no se tocan aquí porque implicaría leer computedStyle y modificar CSS global.
+					};
+
+					// Recorre todo el documento al inicio
+					const runInitialPass = () => {
+						// seleccionamos elementos que más nos interesan
+						document.querySelectorAll('[src],[href],[srcset],[style]').forEach(processElement);
+						fixStyleTags();
+					};
+
+					// Observador para elementos nuevos o cambios de atributos (src/href/style/srcset)
+					const observer = new MutationObserver(muts => {
+						muts.forEach(m => {
+							if (m.type === 'attributes') {
+								processElement(m.target);
+							} else if (m.type === 'childList') {
+								m.addedNodes.forEach(node => {
+									if (node.nodeType === 1) {
+										processElement(node);
+										node.querySelectorAll && node.querySelectorAll('[src],[href],[srcset],[style]').forEach(processElement);
+									}
+								});
+							}
+						});
+					});
+
+					// iniciar
+					runInitialPass();
+					observer.observe(document.documentElement || document.body, {
+						childList: true,
+						subtree: true,
+						attributes: true,
+						attributeFilter: ['src','href','srcset','style']
+					});
+
+					// Si quieres detener el observer más tarde:
+					// observer.disconnect();
+				});
+			})();
+		</script>
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+	
