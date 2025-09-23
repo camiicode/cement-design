@@ -1,0 +1,38 @@
+// Header
+#wrapwrap {
+  #top {
+    nav.navbar {
+      padding: 1rem 0;
+      
+      #top_menu.me-auto {
+        margin-right: 0 !important;
+        margin-left: auto !important;
+      }
+    }
+  }
+}
+
+// Footer
+footer#bottom {
+  background-color: #0c161c !important;
+  
+  .s_title {
+    .s_allow_columns {
+      .o_text_columns {
+        .row {
+          @media screen and (max-width: 768px) {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            .col-3 {
+              width: 100% !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.o_footer { background-color: transparent !important; }

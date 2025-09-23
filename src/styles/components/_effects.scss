@@ -1,0 +1,11 @@
+.hover-card {
+  transition: ease-in-out .3s all;
+
+  &:hover {
+    box-shadow: 
+      5px 5px 10px rgba(0,0,0,.05),
+      5px 5px 10px rgba(255,255,255,.05)
+    ;
+    transform: scale(1.025);
+  }
+}

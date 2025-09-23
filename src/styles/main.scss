@@ -1,8 +1,14 @@
 // Base
 @use "base/reset";
 
+// Components
+@use "components/effects";
+
 // Pages
 @use "pages/home";
 
 // Snippets
 @use "snippets/title";
+
+// Vendors
+@use "vendors/odoo";
