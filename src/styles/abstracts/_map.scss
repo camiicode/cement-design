@@ -1,0 +1,26 @@
+// Breakpoints for media queries
+$breakpoints: (
+
+  // Phones
+  "phone-xxs":                   320px,
+  "phone-xs":                   375px,
+  "phone-s":                    420px,
+  "phone-m":                    580px,
+  "phone-l":                    640px,
+  "phone-xl":                   800px,
+
+  // Tablets
+  "tablet-xs":                  750px,
+  "tablet-s":                   820px,
+  "tablet-m":                   900px,
+  "tablet-l":                   980px,
+
+  // Desktop
+  "desktop-xs":                1024px,
+  "desktop-s":                 1140px,
+  "desktop-md":                1280px,
+  "desktop-l":                 1360px,
+  "desktop-xl":                1440px,
+  "desktop-xxl":               1980px
+  
+);

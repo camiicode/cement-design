@@ -1,0 +1,104 @@
+<t t-name="website.trabaja-con-nosotros">
+  <t t-call="website.layout">
+    <div id="wrap" class="oe_structure oe_empty">
+      <section id="cd-title-h1" class="cd cd-title o_colored_level" style="background-image: none;">
+        <div class="container">
+          <div class="row">
+            <div class="col text-start o_colored_level">
+              <h2 class="cd-subtitle text-uppercase mb-5">Lorem Ipsum Dolor</h2>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="s_website_form pt16 pb16 o_colored_level" data-vcss="001" data-snippet="s_website_form" data-name="Formulario" style="background-image: none;">
+        <div class="container">
+          <form action="/website/form/" method="post" enctype="multipart/form-data" class="o_mark_required" data-mark="*" data-pre-fill="true" data-model_name="mail.mail" data-success-mode="redirect" data-success-page="/contactus-thank-you">
+            <div class="s_website_form_rows row s_col_no_bgcolor">
+              <div data-name="Field" class="s_website_form_field mb-3 col-12 s_website_form_custom s_website_form_required" data-type="char">
+                <div class="row s_col_no_resize s_col_no_bgcolor d-block">
+                  <label class="col-form-label col-sm-auto s_website_form_label" for="obij2aulqyau">
+                    <span class="s_website_form_label_content o_default_snippet_text">Su nombre</span>
+                    <span class="s_website_form_mark o_default_snippet_text">
+                      *</span>
+                  </label>
+                  <div class="col-sm">
+                    <input class="form-control s_website_form_input" type="text" name="name" required="1" data-fill-with="name" id="obij2aulqyau"/>
+                  </div>
+                </div>
+              </div>
+
+              <div data-name="Field" class="s_website_form_field mb-3 col-12 s_website_form_model_required" data-type="email">
+                <div class="row s_col_no_resize s_col_no_bgcolor d-block">
+                  <label class="col-form-label col-sm-auto s_website_form_label" for="oub62hlfgjwf">
+                    <span class="s_website_form_label_content o_default_snippet_text">Su correo electrónico</span>
+                    <span class="s_website_form_mark o_default_snippet_text">
+                      *</span>
+                  </label>
+                  <div class="col-sm">
+                    <input class="form-control s_website_form_input" type="email" name="email_from" required="" data-fill-with="email" id="oub62hlfgjwf"/>
+                  </div>
+                </div>
+              </div><div data-name="Field" class="s_website_form_field mb-3 col-12 s_website_form_custom" data-type="tel">
+                <div class="row s_col_no_resize s_col_no_bgcolor d-block">
+                  <label class="col-form-label col-sm-auto s_website_form_label" for="ozp7022vqhe">
+                    <span class="s_website_form_label_content o_default_snippet_text">Número de teléfono</span>
+                  </label>
+                  <div class="col-sm">
+                    <input class="form-control s_website_form_input" type="tel" name="phone" data-fill-with="phone" id="ozp7022vqhe"/>
+                  </div>
+                </div>
+              </div>
+
+              <div data-name="Field" class="s_website_form_field mb-3 col-12 s_website_form_model_required" data-type="char">
+                <div class="row s_col_no_resize s_col_no_bgcolor d-block">
+                  <label class="col-form-label col-sm-auto s_website_form_label" for="oqsf4m51acj">
+                    <span class="s_website_form_label_content o_default_snippet_text">Asunto</span>
+                    <span class="s_website_form_mark o_default_snippet_text">
+                      *</span>
+                  </label>
+                  <div class="col-sm">
+                    <input class="form-control s_website_form_input" type="text" name="subject" required="" id="oqsf4m51acj"/>
+                  </div>
+                </div>
+              </div>
+              <div data-name="Field" class="s_website_form_field mb-3 col-12 s_website_form_custom s_website_form_required" data-type="text">
+                <div class="row s_col_no_resize s_col_no_bgcolor d-block">
+                  <label class="col-form-label col-sm-auto s_website_form_label" for="oyeqnysxh10b">
+                    <span class="s_website_form_label_content o_default_snippet_text">Su pregunta</span>
+                    <span class="s_website_form_mark o_default_snippet_text">
+                      *</span>
+                  </label>
+                  <div class="col-sm">
+                    <textarea class="form-control s_website_form_input" name="description" required="1" id="oyeqnysxh10b" rows="3"/>
+                  </div>
+                </div>
+              </div>
+              <div data-name="Field" class="s_website_form_field mb-3 col-12 s_website_form_dnone">
+                <div class="row s_col_no_resize s_col_no_bgcolor d-block">
+                  <label class="col-form-label col-sm-auto s_website_form_label"><span class="s_website_form_label_content"/></label><div class="col-sm">
+                    <input type="hidden" class="form-control s_website_form_input" name="email_to" value="info@yourcompany.example.com"/>
+                  </div>
+                </div>
+              </div><div data-name="Field" class="s_website_form_field mb-3 col-12 s_website_form_custom" data-type="boolean">
+                <div class="row s_col_no_resize s_col_no_bgcolor">
+                  <div class="col-auto">
+                    <div class="form-check d-inlin-block">
+                      <input type="checkbox" value="Yes" class="s_website_form_input form-check-input" name="Acepto la Politica de Privacidad" id="ot5vxczh172" data-fill-with="undefined"/>
+                    </div>
+                  </div>
+                  <label class="col-sm-auto s_website_form_label" for="ot5vxczh172">
+                    <span class="s_website_form_label_content">Acepto la Politica de Privacidad</span>
+                  </label>
+                </div>
+              </div><div class="mb-0 py-2 col-12 s_website_form_submit" data-name="Submit Button">
+                <a href="#" role="button" class="btn btn-primary s_website_form_send o_default_snippet_text">Enviar</a>
+                <span id="s_website_form_result"/>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+  </t>
+</t>

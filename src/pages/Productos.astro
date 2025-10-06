@@ -1,0 +1,52 @@
+---
+// Snippets
+import BigHeroImage from '../components/BigHeroImage.astro';
+import RowsTextImage from '../components/RowsTextImage.astro';
+import IconFeatures from '../components/IconFeatures.astro';
+
+// Layouts
+import Layout from '../layouts/Layout.astro';
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+---
+
+<Layout>
+	<t name="Home" t-name="website.homepage">
+  	<t t-call="website.layout">
+    	<t t-set="pageName" t-value="'homepage'"/>
+    	<div id="wrap" class="oe_structure oe_empty"></div>
+
+				<section id="cd-productCategories" class="cd-productCategories">
+          <div class="container">
+            <div class="row h-[50vh]">
+              <div class="col-12 col-md-8 h-100 overflow-hidden">
+                <a href="#">
+                  <figure>
+                    <img src="/web/image/27928-08f7942a/image.png" alt="#" class="img img-fluid object-fit-cover h-100" />
+                    <caption>lorem ipsum dolor sit amet consectetur</caption>
+                  </figure>
+                </a>
+              </div>
+              <div class="d-none d-md-block col-md-4 h-100 overflow-hidden">
+                <a href="#">
+                  <figure>
+                    <img src="/web/image/27929-660b939e/image.png" alt="#" class="img img-fluid object-fit-cover h-50" />
+                    <caption>Lorem ipsum dolor sit amet.</caption>
+                  </figure>
+                </a>
+                <a href="#">
+                  <figure>
+                    <img src="/web/image/27923-064e61f3/image.png" alt="#" class="img img-fluid object-fit-cover h-50" />
+                    <caption>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</caption>
+                  </figure>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+			</div>
+  	</t>
+	</t>
+</Layout>

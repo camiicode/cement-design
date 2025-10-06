@@ -1,6 +1,7 @@
 ---
 
 // Styles
+import "../styles/global.css";
 import "../styles/main.scss";
 
 ---
@@ -42,7 +43,7 @@ import "../styles/main.scss";
 		<script>
 			(()=>{
 				document.addEventListener('DOMContentLoaded', () => {
-					const BASE_URL = 'https://cement-design.doodrix.com'; // sin slash final
+					const BASE_URL = 'https://cementdesign.shop'; // sin slash final
 					const PREFIX_RE = /^\/(?:web|shop)(?:\/|$)/; // detecta /web... o /shop...
 
 					const fixPath = (p) => {
