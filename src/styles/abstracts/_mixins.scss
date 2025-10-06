@@ -1,0 +1,28 @@
+@use "sass:map";
+@use 'variables' as *;
+@use 'map' as *;
+
+// Media Queries
+@mixin mq($width, $type: max) {
+  @if map.has-key($breakpoints, $width) {
+    $width: map.get($breakpoints, $width);
+    @if $type == max {
+      $width: $width - 1px;
+    }
+    @media only screen and (#{$type}-width: $width) {
+      @content;
+    }
+  } @else {
+    @warn 'No hay un dimension #{$width} definido';
+  }
+  // @include mq( {{ $breakpoint }}, {{ @'min' or @'max' }} ) { @content }
+}
+
+// Meadia Queries for landscape
+@mixin mq-l($width, $type: max){
+  $width: map.get($breakpoints, $width);
+  @media (#{$type}-width: $width) and (orientation: landscape) {
+    @content;
+  }
+  // @include mq-l( {{ $brekpoint }} ) { @content }
+}

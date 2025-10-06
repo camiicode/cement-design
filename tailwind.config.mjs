@@ -7,4 +7,12 @@ export default {
     extend: {},
   },
   plugins: [],
-}
+  corePlugins: {
+    preflight: true,
+    ringWidth: false,
+    ringColor: false,
+    ringOffsetWidth: false,
+    ringOffsetColor: false,
+    boxShadow: false,
+  },
+};

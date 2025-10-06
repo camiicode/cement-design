@@ -1,3 +1,8 @@
+// Abstracts
+@use "abstracts/map";
+@use "abstracts/mixins";
+@use "abstracts/variables";
+
 // Base
 @use "base/reset";
 
