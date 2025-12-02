@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@astrojs/tailwind": "^6.0.2",
-    "astro": "^5.13.5",
+    "astro": "^5.16.3",
     "sass": "^1.92.0"
   },
   "devDependencies": {
